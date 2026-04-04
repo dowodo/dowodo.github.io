@@ -171,26 +171,35 @@
     <h2>장바구니 목록</h2>
     <ul id="cart-list"></ul>
   </main>
+  
+<script>
+  let cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+  let cartCount = cartItems.length;
 
-  <script>
-    let cartCount = 0;
-    let cartItems = [];
+  document.getElementById("cart-count").textContent = cartCount;
+  renderCart();
 
-    function addToCart(productName) {
-      cartCount++;
-      cartItems.push(productName);
+  function addToCart(productName) {
+    cartItems.push(productName);
+    cartCount = cartItems.length;
 
-      document.getElementById('cart-count').textContent = cartCount;
+    localStorage.setItem("cartItems", JSON.stringify(cartItems));
 
-      const cartList = document.getElementById('cart-list');
-      cartList.innerHTML = "";
+    document.getElementById("cart-count").textContent = cartCount;
+    renderCart();
 
-      for (let i = 0; i < cartItems.length; i++) {
-        const li = document.createElement("li");
-        li.textContent = cartItems[i];
-        cartList.appendChild(li);
-      }
-
-      alert(productName + ' 상품이 장바구니에 담겼습니다.');
+    alert(productName + " 상품이 장바구니에 담겼습니다.");
   }
-</script>
+
+  function renderCart() {
+    const cartList = document.getElementById("cart-list");
+    cartList.innerHTML = "";
+
+    for (let i = 0; i < cartItems.length; i++) {
+      const li = document.createElement("li");
+      li.textContent = cartItems[i];
+      cartList.appendChild(li);
+    }
+  }
+</script>  
+    
