@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>상품 상세</title>
+</head>
+<body>
+
+  <h1>상품 상세 페이지</h1>
+
+  <h2 id="name"></h2>
+  <p id="price"></p>
+
+  <a href="index.html">← 메인으로 돌아가기</a>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const name = params.get("name");
+    const price = params.get("price");
+
+    document.getElementById("name").textContent = name;
+    document.getElementById("price").textContent = price + "원";
+  </script>
+
+</body>
+</html>
