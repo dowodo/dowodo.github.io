@@ -138,6 +138,7 @@
           <a href="detail.html?name=기저귀 세트&price=18000">
             <button>상세보기</button>
           </a>
+          <button onclick="addToCart('기저귀 세트')">장바구니 담기</button>
         </div>
       </div>
 
@@ -150,6 +151,7 @@
           <a href="detail.html?name=젖병 2개입&price=12000">
             <button>상세보기</button>
           </a>
+          <button onclick="addToCart('젖병 2개입')">장바구니 담기</button>
         </div>
       </div>
 
@@ -161,20 +163,34 @@
           <div class="price">6,500원</div>
           <a href="detail.html?name=아기 물티슈&price=6500">
             <button>상세보기</button>
-          </a>      
+          </a> 
+          <button onclick="addToCart('아기 물티슈')">장바구니 담기</button>
         </div>
       </div>
     </div>
+    <h2>장바구니 목록</h2>
+    <ul id="cart-list"></ul>
   </main>
 
   <script>
     let cartCount = 0;
+    let cartItems = [];
 
     function addToCart(productName) {
       cartCount++;
+      cartItems.push(productName);
+
       document.getElementById('cart-count').textContent = cartCount;
-      alert(productName + ' 상품이 장바구니에 담겼습니다.');
+
+      const cartList = document.getElementById('cart-list');
+      cartList.innerHTML = "";
+
+      for (let i = 0; i < cartItems.length; i++) {
+        const li = document.createElement("li");
+        li.textContent = cartItems[i];
+        cartList.appendChild(li);
     }
-  </script>
-</body>
-</html>
+
+    alert(productName + ' 상품이 장바구니에 담겼습니다.');
+  }
+</script>
