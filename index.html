@@ -1,17 +1,22 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>간단 쇼핑몰 연습</title>
   <style>
-    * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
       font-family: Arial, sans-serif;
       background: #f7f7f9;
       color: #222;
     }
+
     header {
       background: white;
       border-bottom: 1px solid #e5e5e5;
@@ -22,54 +27,65 @@
       position: sticky;
       top: 0;
     }
+
     .logo {
       font-size: 24px;
       font-weight: bold;
     }
+
     .cart-box {
       font-size: 16px;
       font-weight: bold;
     }
+
     .hero {
       max-width: 1100px;
       margin: 30px auto 10px;
       padding: 0 20px;
     }
+
     .hero-banner {
       background: linear-gradient(135deg, #ffffff, #eef3ff);
       border-radius: 16px;
       padding: 32px;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
     }
+
     .hero-banner h1 {
       margin: 0 0 10px;
       font-size: 32px;
     }
+
     .hero-banner p {
       margin: 0;
       color: #555;
       line-height: 1.6;
     }
+
     main {
       max-width: 1100px;
       margin: 20px auto 50px;
       padding: 0 20px;
     }
+
     .product-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
       gap: 20px;
     }
+
     .card {
       background: white;
       border-radius: 16px;
       overflow: hidden;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
       transition: transform 0.2s ease;
     }
+
     .card:hover {
       transform: translateY(-4px);
     }
+
     .image {
       height: 220px;
       background: #dfe7f7;
@@ -79,14 +95,17 @@
       font-size: 18px;
       color: #5a6a85;
     }
+
     .card-body {
       padding: 18px;
     }
+
     .product-name {
       font-size: 18px;
       font-weight: bold;
       margin: 0 0 8px;
     }
+
     .product-desc {
       font-size: 14px;
       color: #666;
@@ -94,11 +113,13 @@
       line-height: 1.5;
       min-height: 42px;
     }
+
     .price {
       font-size: 20px;
       font-weight: bold;
       margin-bottom: 14px;
     }
+
     button {
       width: 100%;
       border: none;
@@ -109,11 +130,13 @@
       font-size: 15px;
       cursor: pointer;
     }
+
     button:hover {
       background: #444;
     }
   </style>
 </head>
+
 <body>
   <header>
     <div class="logo">LAONE SHOP</div>
@@ -163,7 +186,7 @@
           <div class="price">6,500원</div>
           <a href="detail.html?name=아기 물티슈&price=6500">
             <button>상세보기</button>
-          </a> 
+          </a>
           <button onclick="addToCart('아기 물티슈')">장바구니 담기</button>
         </div>
       </div>
@@ -172,7 +195,7 @@
     <button onclick="clearCart()">장바구니 비우기</button>
     <ul id="cart-list"></ul>
   </main>
-  
+
   <script>
     alert("스크립트 실행됨");
     let cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
@@ -191,27 +214,28 @@
       renderCart();
 
       alert(productName + " 잘 샀어요! 후회없으실 거에요!.");
-   }
+    }
 
-   function renderCart() {
-     const cartList = document.getElementById("cart-list");
-     cartList.innerHTML = "";
+    function renderCart() {
+      const cartList = document.getElementById("cart-list");
+      cartList.innerHTML = "";
 
-     for (let i = 0; i < cartItems.length; i++) {
-       const li = document.createElement("li");
-       li.textContent = cartItems[i];
-       cartList.appendChild(li);
-     }
-   function clearCart() {
-     cartItems = [];
-     cartCount = 0;
+      for (let i = 0; i < cartItems.length; i++) {
+        const li = document.createElement("li");
+        li.textContent = cartItems[i];
+        cartList.appendChild(li);
+      }
+      function clearCart() {
+        cartItems = [];
+        cartCount = 0;
 
-     localStorage.setItem("cartItems", JSON.stringify(cartItems));
+        localStorage.setItem("cartItems", JSON.stringify(cartItems));
 
-     document.getElementById("cart-count").textContent = 0;
-     renderCart();
-   }
-   }
-  </script>  
+        document.getElementById("cart-count").textContent = 0;
+        renderCart();
+      }
+    }
+  </script>
 </body>
-</html>    
+
+</html>
