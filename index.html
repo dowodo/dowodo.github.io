@@ -225,7 +225,8 @@
         li.textContent = cartItems[i];
         cartList.appendChild(li);
       }
-    }  
+    }
+
     function clearCart() {
       cartItems = [];
       cartCount = 0;
@@ -233,9 +234,8 @@
       localStorage.setItem("cartItems", JSON.stringify(cartItems));
 
       document.getElementById("cart-count").textContent = 0;
-        renderCart();
-      }
-    }
+      renderCart();
+    } 
   </script>
 </body>
 
