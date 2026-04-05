@@ -197,13 +197,14 @@
   </main>
 
   <script>
-    alert("스크립트 실행됨");
     let cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
     let cartCount = cartItems.length;
 
+    // 처음 화면에 숫자 표시 + 목록 표시
     document.getElementById("cart-count").textContent = cartCount;
     renderCart();
 
+    // 장바구니 추가
     function addToCart(productName) {
       cartItems.push(productName);
       cartCount = cartItems.length;
@@ -216,6 +217,7 @@
       alert(productName + " 잘 샀어요! 후회없으실 거에요!.");
     }
 
+    // 장바구니 목록 그리기
     function renderCart() {
       const cartList = document.getElementById("cart-list");
       cartList.innerHTML = "";
@@ -227,6 +229,7 @@
       }
     }
 
+    // 장바구니 비우기
     function clearCart() {
       cartItems = [];
       cartCount = 0;
@@ -235,8 +238,4 @@
 
       document.getElementById("cart-count").textContent = 0;
       renderCart();
-    } 
-  </script>
-</body>
-
-</html>
+    }
