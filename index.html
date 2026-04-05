@@ -169,6 +169,7 @@
       </div>
     </div>
     <h2>장바구니 목록</h2>
+    <button onclick="clearCart()">장바구니 비우기</button>
     <ul id="cart-list"></ul>
   </main>
   
@@ -200,6 +201,15 @@
        const li = document.createElement("li");
        li.textContent = cartItems[i];
        cartList.appendChild(li);
+     }
+  function clearCart() {
+    cartItems = [];
+    cartCount = 0;
+
+    localStorage.setItem("cartItems", JSON.stringify(cartItems));
+
+    document.getElementById("cart-count").textContent = 0;
+    renderCart();
      }
    }
   </script>  
